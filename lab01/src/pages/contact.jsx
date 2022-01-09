@@ -1,0 +1,5 @@
+﻿export function Contact() {
+    return(
+        <h1>Page Contact</h1>
+    );
+}
