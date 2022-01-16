@@ -4,6 +4,7 @@ import { Home } from "./home";
 import { Profile } from "./profile";
 import { MyProfile } from "./my_profile";
 import { OthersProfile } from "./others_profile";
+import Search from "./search";
 
 export default function Index() {
   return (
@@ -11,6 +12,7 @@ export default function Index() {
       <BrowserRouter>
         <Routes>
           <Route path="home/*" element={<Home />} />
+          <Route path="search/*" element={<Search />} />
           <Route path="profile" element={<Profile />}>
             <Route path="me" element={<MyProfile />} />
             <Route path=":id" element={<OthersProfile />} />
