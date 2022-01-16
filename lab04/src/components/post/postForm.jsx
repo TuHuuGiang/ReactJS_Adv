@@ -1,25 +1,55 @@
-import React, { useState } from 'react';
-import './style.css';
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { postAdd } from "./postsSlide";
+import { nanoid } from "@reduxjs/toolkit";
+import "./style.css";
 
 export const PostForm = () => {
-    const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
 
-    const onTitleChanged = e => setTitle(e.target.value);
-    const onContentChanged = e => setContent(e.target.value                                         );
+  const dispatch = useDispatch();
 
-    return(
-        <>
-            <section>
-                <h2>Add a new post</h2>
-                <form>
-                    <label htmlFor="postTitle">Post title</label>
-                    <input type="text" id='postTitle' name='postTitle' value={title} onClick={onTitleChanged} />
-                    <label htmlFor="postContent">Post content</label>
-                    <textarea name="postContent" id="postContent" value={content} onClick={onContentChanged} ></textarea>
-                    <button type='button'>Create new Post</button>
-                </form>
-            </section>
-        </>
-    );
-}
+  const onTitleChanged = (e) => setTitle(e.target.value);
+  const onContentChanged = (e) => setContent(e.target.value);
+
+  const onCreateNewPost = () => {
+    if (title && content) {
+      dispatch(
+        postAdd({
+          id: nanoid(),
+          title,
+          content,
+        })
+      );
+    }
+  };
+
+  return (
+    <>
+      <section>
+        <h2>Add a new Post</h2>
+        <form>
+          <label htmlFor="postTitle">Post title:</label>
+          <input
+            type="text"
+            id="postTitle"
+            name="postTitle"
+            value={title}
+            onChange={onTitleChanged}
+          />
+          <label htmlFor="postContent">Post content</label>
+          <textarea
+            id="postContent"
+            name="postContent"
+            value={content}
+            onChange={onContentChanged}
+          />
+          <button type="button" onClick={onCreateNewPost}>
+            Create new Post
+          </button>
+        </form>
+      </section>
+    </>
+  );
+};

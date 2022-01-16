@@ -9,7 +9,12 @@ const initialState = [
 const postSlide = createSlice({
     name: 'posts',
     initialState,
-    reducers: {}
+    reducers: {
+        postAdd(state, action) {
+            state.push(action.payload);
+        }
+    }
 });
 
+export const { postAdd } = postSlide.actions;
 export default postSlide.reducer;
