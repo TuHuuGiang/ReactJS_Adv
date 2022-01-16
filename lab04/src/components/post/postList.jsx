@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import './style.css';
 
 export const PostList = () => {
   const posts = useSelector((state) => state.posts);
@@ -7,9 +8,9 @@ export const PostList = () => {
       <h3>{post.title}</h3>
       <p className="post-content">
         {
-            post.content.length < 100
-          ? post.content
-          : post.content.substring(0, 100) + "..."
+            post.content.length < 100 ? 
+            post.content: 
+            post.content.substring(0, 100) + "..."
         }
       </p>
     </article>

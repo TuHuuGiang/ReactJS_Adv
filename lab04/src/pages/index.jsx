@@ -1,4 +1,5 @@
 import { PostList } from "../components/post/postList";
+import './style.css';
 
 export default function Index() {
     return(
